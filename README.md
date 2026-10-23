@@ -31,6 +31,16 @@ Create a PRIVATE repository and upload everything from this zip. index.html must
 2. Press "Upload this data" in the box "Server has no data yet". Wait 10 to 20 seconds.
 3. On every other device just open the site and sign in. Same data everywhere.
 
+## Clearing all data
+The "Clear data" button (top right, Admin only) calls `POST /api/clear`, which deletes every
+customer, payment, document, category and collection figure straight from the Supabase tables.
+Once it reports success the data is gone on every device, not just the one you pressed it on.
+If the button cannot reach the server at all, run `supabase/clear-all.sql` in the Supabase SQL Editor.
+
+Nothing is stored in the browser any more: every figure on the screen comes from Supabase, and
+every change (customers, payments, documents, categories, opening balances, company name and logo)
+is written back to Supabase within a second.
+
 ## Already deployed earlier?
 If you used an older version, run supabase/add-documents.sql once, then redeploy.
 Changing an environment variable needs a Redeploy in Vercel.
